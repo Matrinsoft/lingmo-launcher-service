@@ -1,0 +1,13 @@
+Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Upstream-Name: lingmo-launcher-service
+Upstream-Contact: Lingmo OS Team <team@lingmo.org>
+Source: https://github.com/Matrinsoft/lingmo-launcher-service
+
+Files: *
+Copyright: 2021 System76 <info@system76.com>
+           2026 Lingmo OS Team <team@lingmo.org>
+License: MPL-2.0
+
+Files: debian/* plugins/*
+Copyright: 2021 System76 <info@system76.com>
+License: GPL-3
