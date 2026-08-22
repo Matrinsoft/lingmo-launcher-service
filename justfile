@@ -91,6 +91,11 @@ uninstall:
 vendor:
     mkdir -p .cargo
     cargo vendor --sync bin/Cargo.toml --sync plugins/Cargo.toml --sync service/Cargo.toml 2>/dev/null | awk '/^\[/{p=1} p' > .cargo/config
+    grep '^source = "git+" Cargo.lock | sed 's/source = "//;s/"$//' | sort -u | while read src; do \
+        echo "[source \"$src\"]"; \
+        echo 'replace-with = "vendored-sources"'; \
+        echo ""; \
+    done >> .cargo/config
     tar pcf vendor.tar vendor .cargo/config
     rm -rf vendor
 
