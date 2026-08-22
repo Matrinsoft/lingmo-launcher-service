@@ -39,7 +39,7 @@ sctk = { package = "smithay-client-toolkit", version = "0.20.0", features = [
 ] }
 
 # dependencies desktop entries
-switcheroo-control = { git = "https://github.com/Matrinsoft/dbus-settings-bindings" }
+switcheroo-control = { git = "https://github.com/pop-os/dbus-settings-bindings" }
 
 [dependencies.reqwest]
 version = "0.12.23"
