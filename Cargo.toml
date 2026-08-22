@@ -53,4 +53,4 @@ features = ["io-util"]
 # freedesktop-desktop-entry = { path = "../freedesktop-desktop-entry" }
 
 [patch."https://github.com/Matrinsoft/lingmo-protocols"]
-"cosmic-client-toolkit" = { git = "https://github.com/Matrinsoft//cosmic-protocols" }
+"cosmic-client-toolkit" = { git = "https://github.com/Matrinsoft/lingmo-protocols" }
