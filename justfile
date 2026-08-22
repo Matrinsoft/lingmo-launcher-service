@@ -90,12 +90,8 @@ uninstall:
 # Vendor Cargo dependencies locally
 vendor:
     mkdir -p .cargo
-    cargo vendor --sync bin/Cargo.toml \
-        --sync plugins/Cargo.toml \
-        --sync service/Cargo.toml \
-        | head -n -1 > .cargo/config
-    echo 'directory = "vendor"' >> .cargo/config
-    tar pcf vendor.tar vendor
+    cargo vendor --sync bin/Cargo.toml --sync plugins/Cargo.toml --sync service/Cargo.toml 2>/dev/null | awk '/^\[/{p=1} p' > .cargo/config
+    tar pcf vendor.tar vendor .cargo/config
     rm -rf vendor
 
 # Extracts vendored dependencies if vendor=1
