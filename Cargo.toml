@@ -51,6 +51,3 @@ features = ["io-util"]
 
 # [patch.crates-io]
 # freedesktop-desktop-entry = { path = "../freedesktop-desktop-entry" }
-
-[patch."https://github.com/Matrinsoft/lingmo-protocols"]
-"cosmic-client-toolkit" = { git = "https://github.com/Matrinsoft/lingmo-protocols" }
