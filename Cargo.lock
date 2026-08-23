@@ -506,7 +506,7 @@ checksum = "773648b94d0e5d620f64f280777445740e61fe701025087ec8b57f45c791888b"
 
 [[package]]
 name = "cosmic-client-toolkit"
-version = "0.1.0"
+version = "0.2.0"
 source = "git+https://github.com/Matrinsoft/lingmo-protocols#14ee91da144fafa0af3943f0dbbe397a0ce72659"
 dependencies = [
  "bitflags",
@@ -2386,7 +2386,7 @@ checksum = "13c2bddecc57b384dee18652358fb23172facb8a2c51ccc10d74c157bdea3292"
 [[package]]
 name = "switcheroo-control"
 version = "0.1.0"
-source = "git+https://github.com/pop-os/dbus-settings-bindings#0fa672f8dadb884001ef9a251b149ed432879629"
+source = "git+https://github.com/Matrinsoft/dbus-settings-bindings#0fa672f8dadb884001ef9a251b149ed432879629"
 dependencies = [
  "zbus",
 ]
