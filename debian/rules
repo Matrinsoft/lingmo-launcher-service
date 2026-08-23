@@ -32,4 +32,4 @@ override_dh_auto_install:
 
 override_dh_fixperms:
 	dh_fixperms
-	find debian/pop-launcher/usr/lib/pop-launcher/scripts -name '*.sh' -exec chmod +x {} +
+	find debian/tmp/usr/lib/pop-launcher/scripts -name '*.sh' -exec chmod +x {} + 2>/dev/null || true
