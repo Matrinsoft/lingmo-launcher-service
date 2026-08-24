@@ -1,0 +1,8 @@
+(
+    name: "Lingmo Windows",
+    description: "Active windows controllable via Lingmo",
+    query: (persistent: true, priority: High),
+    bin: (path: "lingmo-toplevel"),
+    icon: Name("focus-windows-symbolic"),
+    long_lived: true,
+)

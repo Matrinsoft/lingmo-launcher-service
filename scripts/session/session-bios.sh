@@ -13,12 +13,12 @@ is_gnome() {
     dbus-send --print-reply --dest=org.gnome.Shell /org/gnome/Shell org.freedesktop.DBus.Properties.Get string:org.gnome.Shell string:ShellVersion >/dev/null 2>&1
 }
 
-is_cosmic() {
-  command -v cosmic-osd >/dev/null && [ "$XDG_SESSION_DESKTOP" = "COSMIC" ]
+is_lingmo() {
+  command -v lingmo-osd >/dev/null && [ "$XDG_SESSION_DESKTOP" = "LINGMO" ]
 }
 
-if is_cosmic; then
-  cosmic-osd enter-bios
+if is_lingmo; then
+  lingmo-osd enter-bios
 elif is_gnome; then
   systemctl reboot --firmware-setup
 elif command -v systemctl >/dev/null; then

@@ -16,7 +16,7 @@ Requires the following dependencies:
 And then must be used with a compatible pop-launcher frontend
 
 - [pop-shell](https://github.com/Matrinsoft/shell/)
-- [cosmic-launcher](https://github.com/Matrinsoft/lingmo-launcher)
+- [lingmo-launcher](https://github.com/Matrinsoft/lingmo-launcher)
 - [onagre](https://github.com/oknozor/onagre)
 
 ```sh

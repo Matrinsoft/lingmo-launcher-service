@@ -39,9 +39,9 @@ pub fn get_description<'a>(de: &'a DesktopEntry, locales: &[String]) -> String {
 
 // todo: cache
 #[must_use]
-pub fn is_session_cosmic() -> bool {
+pub fn is_session_lingmo() -> bool {
     if let Ok(var) = std::env::var("XDG_CURRENT_DESKTOP") {
-        return var.contains("COSMIC");
+        return var.contains("COSMIC") || var.contains("LINGMO");
     }
 
     false

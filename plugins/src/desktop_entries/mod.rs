@@ -9,7 +9,7 @@ use futures::StreamExt;
 use pop_launcher::*;
 use std::borrow::Cow;
 use tokio::io::AsyncWrite;
-use utils::{get_description, is_session_cosmic};
+use utils::{get_description, is_session_lingmo};
 
 pub(crate) mod utils;
 
@@ -42,7 +42,7 @@ const EXCLUSIONS: &[&str] = &["GNOME Shell", "Initial Setup"];
 
 struct App<W> {
     current_desktop: Option<Vec<String>>,
-    is_desktop_cosmic: bool,
+    is_desktop_lingmo: bool,
     desktop_entries: Vec<DesktopEntry>,
     locales: Vec<String>,
     tx: W,
@@ -53,7 +53,7 @@ impl<W: AsyncWrite + Unpin> App<W> {
     fn new(tx: W) -> Self {
         Self {
             current_desktop: fde::current_desktop(),
-            is_desktop_cosmic: is_session_cosmic(),
+            is_desktop_lingmo: is_session_lingmo(),
             desktop_entries: Vec::new(),
             locales: fde::get_languages_from_env(),
             tx,
@@ -176,7 +176,7 @@ impl<W: AsyncWrite + Unpin> App<W> {
         if let Some(entry) = self.desktop_entries.get(id as usize) {
             let gpu_len = self.gpus.as_ref().map(Vec::len).unwrap_or(0) as u32;
 
-            let gpu_preference = if self.is_desktop_cosmic {
+            let gpu_preference = if self.is_desktop_lingmo {
                 if context < gpu_len {
                     GpuPreference::SpecificIdx(context)
                 } else if entry.prefers_non_default_gpu() {
@@ -193,7 +193,7 @@ impl<W: AsyncWrite + Unpin> App<W> {
             let response = PluginResponse::DesktopEntry {
                 path: entry.path.to_path_buf(),
                 gpu_preference,
-                action_name: (self.is_desktop_cosmic && context >= gpu_len).then(|| {
+                action_name: (self.is_desktop_lingmo && context >= gpu_len).then(|| {
                     entry.actions().unwrap_or_default()[(context - gpu_len) as usize].to_string()
                 }),
             };
@@ -204,8 +204,8 @@ impl<W: AsyncWrite + Unpin> App<W> {
 
     async fn context(&mut self, id: u32) {
         if let Some(entry) = self.desktop_entries.get(id as usize) {
-            let options = if self.is_desktop_cosmic {
-                self.cosmic_context(entry).await
+            let options = if self.is_desktop_lingmo {
+                self.lingmo_context(entry).await
             } else {
                 self.gnome_context(entry).await
             };
@@ -294,7 +294,7 @@ impl<W: AsyncWrite + Unpin> App<W> {
         }
     }
 
-    async fn cosmic_context(&self, entry: &DesktopEntry) -> Vec<ContextOption> {
+    async fn lingmo_context(&self, entry: &DesktopEntry) -> Vec<ContextOption> {
         let mut options = Vec::new();
 
         if let Some(gpus) = self.gpus.as_ref() {

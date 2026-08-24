@@ -8,7 +8,7 @@ use freedesktop_desktop_entry as fde;
 use toplevel_handler::ToplevelUpdate;
 use tracing::{debug, error, info, warn};
 
-use crate::desktop_entries::utils::{get_description, is_session_cosmic};
+use crate::desktop_entries::utils::{get_description, is_session_lingmo};
 use crate::send;
 use futures::{
     StreamExt,
@@ -27,7 +27,7 @@ use self::toplevel_handler::{ToplevelAction, toplevel_handler};
 pub async fn main() {
     let mut tx = async_stdout();
 
-    if !is_session_cosmic() {
+    if !is_session_lingmo() {
         send(&mut tx, PluginResponse::Deactivate).await;
         return;
     }

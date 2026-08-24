@@ -32,7 +32,7 @@ futures.workspace = true
 bytes = "1.10.1"
 recently-used-xbel = "1.1.0"
 
-# dependencies cosmic toplevel
+# dependencies lingmo toplevel
 cctk = { git = "https://github.com/Matrinsoft/lingmo-protocols", package = "cosmic-client-toolkit" }
 sctk = { package = "smithay-client-toolkit", version = "0.20.0", features = [
     "calloop",

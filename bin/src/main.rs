@@ -32,7 +32,7 @@ async fn main() {
             "scripts" => plugins::scripts::main().await,
             "terminal" => plugins::terminal::main().await,
             "web" => plugins::web::main().await,
-            "cosmic-toplevel" => plugins::cosmic_toplevel::main().await,
+		"lingmo-toplevel" => plugins::lingmo_toplevel::main().await,
             unknown => {
                 eprintln!("unknown cmd: {}", unknown);
             }
